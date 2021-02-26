@@ -19,16 +19,11 @@ export default {
   },
   methods:{
   async userClick(){
-    const item = await axios.get("https://apis.postcode-jp.com/api/v4/postcodes/postcode?1000001 \
-  -G -v \
-  -d 83IMiq6S0eYbQbMYIaN4iel7etb1PrzaYQBd2qN");
-
-  if (this.postalCode === item) {
-  this.address = item;
-    
+    const item = await axios.get(`https://apis.postcode-jp.com/api/v4/postcodes/${this.postalCode}?apiKey=83IMiq6S0eYbQbMYIaN4iel7etb1PrzaYQBd2qN`);
+  
+  this.address = item.data[0].allAddress;
   }
 }
-},
 };
 </script>
 
